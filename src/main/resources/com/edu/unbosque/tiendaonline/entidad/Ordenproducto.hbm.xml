@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/11/2015 08:30:01 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.edu.unbosque.tiendaonline.entidad.Ordenproducto" table="ordenproducto" catalog="tiendavirtual" optimistic-lock="version">
+        <id name="idenOrdenProducto" type="java.lang.Integer">
+            <column name="iden_ordenProducto" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="entregacosto" class="com.edu.unbosque.tiendaonline.entidad.Entregacosto" fetch="select">
+            <column name="iden_entrega" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuario" class="com.edu.unbosque.tiendaonline.entidad.Usuario" fetch="select">
+            <column name="iden_usua_ordenProducto" not-null="true" />
+        </many-to-one>
+        <property name="idenProdOrdenProducto" type="int">
+            <column name="iden_prod_ordenProducto" not-null="true" />
+        </property>
+        <property name="fechOrdenProducto" type="date">
+            <column name="fech_ordenProducto" length="10" not-null="true" />
+        </property>
+        <property name="cantOrdenProducto" type="int">
+            <column name="cant_ordenProducto" not-null="true" />
+        </property>
+        <property name="precOrdenProducto" type="double">
+            <column name="prec_ordenProducto" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="statusOrdenProducto" type="string">
+            <column name="status_ordenProducto" length="45" not-null="true" />
+        </property>
+        <set name="ordenproductodetalles" table="ordenproductodetalle" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="iden_orden_ordenProductoDetalle" not-null="true" />
+            </key>
+            <one-to-many class="com.edu.unbosque.tiendaonline.entidad.Ordenproductodetalle" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/11/2015 08:30:01 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.edu.unbosque.tiendaonline.entidad.Producto" table="producto" catalog="tiendavirtual" optimistic-lock="version">
+        <id name="idenProducto" type="java.lang.Integer">
+            <column name="iden_producto" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="subcategoria" class="com.edu.unbosque.tiendaonline.entidad.Subcategoria" fetch="select">
+            <column name="iden_sub_cate_producto" not-null="true" />
+        </many-to-one>
+        <property name="nombProducto" type="string">
+            <column name="nomb_producto" length="45" not-null="true" />
+        </property>
+        <property name="cantProducto" type="int">
+            <column name="cant_producto" not-null="true" />
+        </property>
+        <property name="precProducto" type="double">
+            <column name="prec_producto" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="urlProducto" type="string">
+            <column name="url_producto" length="45" not-null="true" />
+        </property>
+        <property name="descProducto" type="string">
+            <column name="desc_producto" length="200" not-null="true" />
+        </property>
+        <set name="ordenproductodetalles" table="ordenproductodetalle" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="iden_prod_ordenProductoDetalle" not-null="true" />
+            </key>
+            <one-to-many class="com.edu.unbosque.tiendaonline.entidad.Ordenproductodetalle" />
+        </set>
+    </class>
+</hibernate-mapping>

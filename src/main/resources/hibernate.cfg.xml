@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/tiendavirtual?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.username">ingenieria</property>
+    <property name="hibernate.connection.password">Ingenieria2015*</property>
+    <mapping resource="com/edu/unbosque/tiendaonline/entidad/Ordenproductodetalle.hbm.xml"/>
+    <mapping resource="com/edu/unbosque/tiendaonline/entidad/Rol.hbm.xml"/>
+    <mapping resource="com/edu/unbosque/tiendaonline/entidad/Subcategoria.hbm.xml"/>
+    <mapping resource="com/edu/unbosque/tiendaonline/entidad/Producto.hbm.xml"/>
+    <mapping resource="com/edu/unbosque/tiendaonline/entidad/Usuario.hbm.xml"/>
+    <mapping resource="com/edu/unbosque/tiendaonline/entidad/Entregacosto.hbm.xml"/>
+    <mapping resource="com/edu/unbosque/tiendaonline/entidad/Categoria.hbm.xml"/>
+    <mapping resource="com/edu/unbosque/tiendaonline/entidad/Ordenproducto.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

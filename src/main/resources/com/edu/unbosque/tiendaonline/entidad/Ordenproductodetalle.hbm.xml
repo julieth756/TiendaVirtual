@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/11/2015 08:30:01 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.edu.unbosque.tiendaonline.entidad.Ordenproductodetalle" table="ordenproductodetalle" catalog="tiendavirtual" optimistic-lock="version">
+        <id name="idenOrdenProductoDetalle" type="java.lang.Integer">
+            <column name="iden_ordenProductoDetalle" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="ordenproducto" class="com.edu.unbosque.tiendaonline.entidad.Ordenproducto" fetch="select">
+            <column name="iden_orden_ordenProductoDetalle" not-null="true" />
+        </many-to-one>
+        <many-to-one name="producto" class="com.edu.unbosque.tiendaonline.entidad.Producto" fetch="select">
+            <column name="iden_prod_ordenProductoDetalle" not-null="true" />
+        </many-to-one>
+        <property name="cantOrdenProductoDetalle" type="int">
+            <column name="cant_ordenProductoDetalle" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

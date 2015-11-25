@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/11/2015 08:30:01 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.edu.unbosque.tiendaonline.entidad.Categoria" table="categoria" catalog="tiendavirtual" optimistic-lock="version">
+        <id name="idenCategoria" type="java.lang.Integer">
+            <column name="iden_categoria" />
+            <generator class="identity" />
+        </id>
+        <property name="nombCategoria" type="string">
+            <column name="nomb_categoria" length="45" not-null="true" />
+        </property>
+        <property name="descCategoria" type="string">
+            <column name="desc_categoria" length="45" not-null="true" />
+        </property>
+        <set name="subcategorias" table="subcategoria" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="iden_cate_subcategoria" not-null="true" />
+            </key>
+            <one-to-many class="com.edu.unbosque.tiendaonline.entidad.Subcategoria" />
+        </set>
+    </class>
+</hibernate-mapping>

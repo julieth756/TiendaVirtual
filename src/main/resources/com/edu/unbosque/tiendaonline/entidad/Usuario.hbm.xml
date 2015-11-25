@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/11/2015 08:30:01 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.edu.unbosque.tiendaonline.entidad.Usuario" table="usuario" catalog="tiendavirtual" optimistic-lock="version">
+        <id name="idenUsuario" type="java.lang.Integer">
+            <column name="iden_usuario" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="rol" class="com.edu.unbosque.tiendaonline.entidad.Rol" fetch="select">
+            <column name="role_usuario" not-null="true" />
+        </many-to-one>
+        <property name="nombUsuario" type="string">
+            <column name="nomb_usuario" length="45" not-null="true" />
+        </property>
+        <property name="passUsuario" type="string">
+            <column name="pass_usuario" length="45" not-null="true" />
+        </property>
+        <property name="emaiUsuario" type="string">
+            <column name="emai_usuario" length="45" not-null="true" />
+        </property>
+        <property name="regUsuario" type="date">
+            <column name="reg_usuario" length="10" not-null="true" />
+        </property>
+        <property name="contaUsuario" type="string">
+            <column name="conta_usuario" length="45" not-null="true" />
+        </property>
+        <set name="ordenproductos" table="ordenproducto" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="iden_usua_ordenProducto" not-null="true" />
+            </key>
+            <one-to-many class="com.edu.unbosque.tiendaonline.entidad.Ordenproducto" />
+        </set>
+    </class>
+</hibernate-mapping>
