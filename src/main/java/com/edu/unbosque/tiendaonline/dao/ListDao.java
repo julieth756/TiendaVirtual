@@ -16,10 +16,10 @@ import org.hibernate.SessionFactory;
  * @author jcobos
  */
 public class ListDao {
-    public List<Categoria> catList(){
+    public List catList(){
         SessionFactory factory = HibernateUtil.getSessionFactory();
         Session session = factory.openSession();
-        List<Categoria> cList=session.createQuery("SELECT al FROM Categoria al").list();
+        List<Categoria> cList=session.createQuery("SELECT al.nombCategoria FROM Categoria al").list();
         cList.toString();
         session.close();
         return cList;

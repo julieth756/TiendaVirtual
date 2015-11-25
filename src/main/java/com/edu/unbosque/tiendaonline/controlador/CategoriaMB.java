@@ -19,24 +19,24 @@ import javax.faces.context.FacesContext;
 @ManagedBean
 @SessionScoped
 public class CategoriaMB {
-    Categoria categoria = new Categoria();
+    Categoria cat = new Categoria();
 
     public Categoria getCategoria() {
-        return categoria;
+        return cat;
     }
 
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
+    public void setCategoria(Categoria cat) {
+        this.cat = cat;
     }
     
     public String agregarCategoria(){
-        categoria.setNombCategoria(categoria.getNombCategoria());
-        categoria.setDescCategoria(categoria.getDescCategoria());
-        boolean status = new AgregarDao().agregarCategoria(categoria);
+        cat.setNombCategoria(cat.getNombCategoria());
+        cat.setDescCategoria(cat.getDescCategoria());
+        boolean status = new AgregarDao().agregarCategoria(cat);
         if(status){
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Datos Recibidos", ""));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Datos guardados", ""));
         }else{
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Datos Recibidos", ""));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Datos no guardados", ""));
         }
         return null;
     }

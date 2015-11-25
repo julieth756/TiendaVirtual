@@ -14,6 +14,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.model.SelectItem;
 
 /**
  *
@@ -22,7 +23,7 @@ import javax.faces.context.FacesContext;
 @ManagedBean
 @SessionScoped
 public class SubcategoriaMB {
-    Subcategoria subcategoria = new Subcategoria();
+    Subcategoria subcat = new Subcategoria();
     String nombCategoria;
     List<Categoria> listCate;
 
@@ -35,11 +36,11 @@ public class SubcategoriaMB {
     }
     
     public Subcategoria getSubcategoria() {
-        return subcategoria;
+        return subcat;
     }
 
-    public void setSubcategoria(Subcategoria subcategoria) {
-        this.subcategoria = subcategoria;
+    public void setSubcategoria(Subcategoria subcat) {
+        this.subcat = subcat;
     }
 
     public String getNombCategoria() {
@@ -52,15 +53,20 @@ public class SubcategoriaMB {
     
     public String agregarSubcategoria(){
         listCate = new ListDao().catListPorNomre(nombCategoria);
-        subcategoria.setIdenSubcategoria(listCate.get(0).getIdenCategoria());
-        subcategoria.setNombSubcategoria(subcategoria.getNombSubcategoria());
-        subcategoria.setDescSubcategoria(subcategoria.getDescSubcategoria());
-        boolean status = new AgregarDao().agregarSubcategoria(subcategoria);
+        subcat.setIdenSubcategoria(listCate.get(0).getIdenCategoria());
+        subcat.setNombSubcategoria(subcat.getNombSubcategoria());
+        subcat.setDescSubcategoria(subcat.getDescSubcategoria());
+        boolean status = new AgregarDao().agregarSubcategoria(subcat);
         if(status){
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Datos Recibidos", ""));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Datos guardados", ""));
         }else{
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Datos Recibidos", ""));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Datos no guardados", ""));
         }
         return null;
+    }
+    
+    public List<SelectItem> getNombreCategorias(){
+        List<SelectItem> nombCategoria = new ListDao().catList();
+        return nombCategoria;
     }
 }
