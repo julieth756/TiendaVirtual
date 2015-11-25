@@ -7,7 +7,6 @@
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/tiendavirtual?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">ingenieria</property>
     <property name="hibernate.connection.password">Ingenieria2015*</property>
-    <property name="show_sql">true</property>
     <mapping resource="com/edu/unbosque/tiendaonline/entidad/Ordenproductodetalle.hbm.xml"/>
     <mapping resource="com/edu/unbosque/tiendaonline/entidad/Rol.hbm.xml"/>
     <mapping resource="com/edu/unbosque/tiendaonline/entidad/Subcategoria.hbm.xml"/>
