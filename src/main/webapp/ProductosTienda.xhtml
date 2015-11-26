@@ -13,6 +13,11 @@
                 <f:facet name="header">
                     <h:outputLabel value="Todos los productos"/>
                 </f:facet>
+                <p:panel header="#{producto.nombProducto}">
+                    <h:panelGrid columns="1">
+                        <h:outputText value="#{producto.precProducto}"
+                    </h:panelGrid>
+                </p:panel>
             </p:dataGrid>
         </h:form>
     </h:body>
