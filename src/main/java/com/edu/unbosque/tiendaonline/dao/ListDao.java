@@ -6,6 +6,8 @@
 package com.edu.unbosque.tiendaonline.dao;
 
 import com.edu.unbosque.tiendaonline.entidad.Categoria;
+import com.edu.unbosque.tiendaonline.entidad.Producto;
+import com.edu.unbosque.tiendaonline.entidad.Subcategoria;
 import com.edu.unbosque.tiendaonline.util.HibernateUtil;
 import java.util.List;
 import org.hibernate.Session;
@@ -32,5 +34,23 @@ public class ListDao {
         cList.toString();
         session.close();
         return cList;
+    }
+    
+     public List<Subcategoria> subcatListPorNomre(String nombre){
+        SessionFactory factory = HibernateUtil.getSessionFactory();
+        Session session = factory.openSession();
+        List<Subcategoria> sList=session.createQuery("SELECT al FROM Subcategoria al.idenSubcategoria al.categoria.idenCategoria IN (select a.idenCategoria from Categoria a where lower(a.NombCategoria)='"+nombre.toLowerCase()+"'").list();
+        sList.toString();
+        session.close();
+        return sList;
+    }
+     
+         public List listProductos(){
+        SessionFactory factory = HibernateUtil.getSessionFactory();
+        Session session = factory.openSession();
+        List<Producto> sList=session.createQuery("SELECT al FROM Producto al").list();
+        sList.toString();
+        session.close();
+        return sList;
     }
 }

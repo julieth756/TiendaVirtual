@@ -13,6 +13,7 @@
             <p:panelGrid columns="2">
                 <h:outputLabel value="Seleccione nombre categoria"></h:outputLabel>
                 <p:selectOneMenu value="#{subcategoriaMB.nombCategoria}">
+                    <f:selectItem itemLabel="Seleccione: " itemValue=""></f:selectItem>
                     <f:selectItems value="#{subcategoriaMB.nombreCategorias}"></f:selectItems>
                 </p:selectOneMenu>
                 <h:outputLabel value="Descripción Subcategoria"></h:outputLabel>

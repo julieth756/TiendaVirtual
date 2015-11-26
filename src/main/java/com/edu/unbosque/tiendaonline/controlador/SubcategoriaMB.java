@@ -26,6 +26,7 @@ public class SubcategoriaMB {
     Subcategoria subcat = new Subcategoria();
     String nombCategoria;
     List<Categoria> listCate;
+    Categoria categoria = new Categoria();
 
     public List<Categoria> getListCate() {
         return listCate;
@@ -53,7 +54,8 @@ public class SubcategoriaMB {
     
     public String agregarSubcategoria(){
         listCate = new ListDao().catListPorNomre(nombCategoria);
-        subcat.setIdenSubcategoria(listCate.get(0).getIdenCategoria());
+        //subcat.setIdenSubcategoria(listCate.get(0).getIdenCategoria());
+        categoria.setIdenCategoria(listCate.get(0).getIdenCategoria());
         subcat.setNombSubcategoria(subcat.getNombSubcategoria());
         subcat.setDescSubcategoria(subcat.getDescSubcategoria());
         boolean status = new AgregarDao().agregarSubcategoria(subcat);

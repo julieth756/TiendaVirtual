@@ -6,6 +6,7 @@
 package com.edu.unbosque.tiendaonline.dao;
 
 import com.edu.unbosque.tiendaonline.entidad.Categoria;
+import com.edu.unbosque.tiendaonline.entidad.Producto;
 import com.edu.unbosque.tiendaonline.entidad.Subcategoria;
 import com.edu.unbosque.tiendaonline.util.HibernateUtil;
 import javax.faces.bean.ManagedBean;
@@ -41,6 +42,20 @@ public class AgregarDao {
             Session session = factory.openSession();
             session.beginTransaction();
             session.save(subcat);
+            session.getTransaction().commit();
+            session.close();
+            return true;
+        } catch (Exception e) {
+            return false; 
+        }  
+    }
+        
+         public boolean agregarProducto(Producto prod){
+        try {
+            SessionFactory factory = HibernateUtil.getSessionFactory();
+            Session session = factory.openSession();
+            session.beginTransaction();
+            session.save(prod);
             session.getTransaction().commit();
             session.close();
             return true;
